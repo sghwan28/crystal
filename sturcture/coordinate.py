@@ -31,6 +31,15 @@ class Coordinate(object):
     def get_coordinate(self):
         return self.cx, self.cy, self.cz   # return a tuple
 
+class Element(object):
+
+
+class Atom(object):
+
+    def __init__(self, element:Element, loc:Coordinate):
+        self.element = element
+        self.location = loc
+
 
 class UnitCell(object):
     def __init__(self):
