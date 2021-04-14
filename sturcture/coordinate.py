@@ -1,31 +1,53 @@
 class Coordinate(object):
 
-    def __init__(self,x,y,z):
-        self.coordinate = (x,y,z)
+    def __init__(self, x, y, z):
+        self.cx = x
+        self.cy = y
+        self.cz = z
 
-    def add(self,other):
-        self.coordinate = tuple((sum(i) for i in zip(self.coordinate, other.coordinate)))
+    def add(self, other):
+        self.cx += other.cx
+        self.cy += other.cy
+        self.cz += other.cz
 
-    def multiple(self,factor):
-        self.coordinate = tuple((i*factor for i in self.coordinate))
+    def multiply(self, factor):
+        self.cx *= factor
+        self.cy *= factor
+        self.cz *= factor
+
+    def dot(self,other):
+        return (self.cx * other.cx) + (self.cy * other.cy) + (self.cz * other.cz)
+
+    def __add__(self, other):
+        return Coordinate(self.cx + other.cx, self.cy + other.cy, self.cz + other.cz)
+
+    def __mul__(self, other):  # refers to cross product
+        # place holder here
+        pass
+
+    def __eq__(self, other):
+        return self.get_coordinate() == other.get_coordinate()
 
     def get_coordinate(self):
-        return self.coordinate
+        return self.cx, self.cy, self.cz   # return a tuple
 
-class Rectiliner():
-    def __init__(self,a:Coordinate,b:Coordinate,c:Coordinate):
-        self.edge_a = a
-        self.edge_b = b
-        self.edge_c = c
 
-    def make_vector(self,x,y,z):
-        return (x*self.edge_a, y*self.edge_b, z*self.edge_c)
+class UnitCell(object):
+    def __init__(self):
+        self.atom_number = 0
+        self.atom_list = dict()
 
-# a = Rectiliner()
-# print(a.make_vector(0.5,0.5,0.5))
+    def add_atom(self):
+        pass
 
-a = Coordinate(1,1,2)
-b = Coordinate(1,2,3)
-a.add(b)
-a.multiple(2)
-print(a.get_coordinate())
+    def get_atom_list(self):
+        pass
+
+    def get_atom_numbers(self):
+        return self.atom_number
+
+    def __iter__(self):
+        pass
+
+    def __str__(self):
+        pass
