@@ -32,6 +32,7 @@ class Coordinate(object):
         return self.cx, self.cy, self.cz   # return a tuple
 
 class Element(object):
+    pass
 
 
 class Atom(object):
@@ -54,6 +55,12 @@ class UnitCell(object):
 
     def get_atom_numbers(self):
         return self.atom_number
+
+    def get_max_distance(self):
+        pass
+
+    def get_edges(self):
+        pass
 
     def __iter__(self):
         pass
