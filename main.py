@@ -1,8 +1,17 @@
-txt = "apple, banana, cherry, split, kky"
+class Element(object):
 
-# setting the maxsplit parameter to 1, will return a list with 2 elements!
-x = txt.rsplit(", ", 3)
+    def __init__(self, element: str):
+        self.element = element
+        print(self.element)
 
-print(x)
 
-# note that the result has only 2 elements "apple, banana" is the first element, and "cherry" is the last.
+class Atom(Element):
+
+    def __init__(self,element):
+        super().__init__(element)
+        self.y = 1
+        print(self.y)
+
+
+c = Element('C')
+c1 = Atom('O')

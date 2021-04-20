@@ -1,5 +1,5 @@
 import unittest
-from coordinate import *
+from coordinate import Coordinate
 
 
 class TestCoordinateMethod(unittest.TestCase):

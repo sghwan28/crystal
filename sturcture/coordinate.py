@@ -15,13 +15,13 @@ class Coordinate(object):
         self.cy *= factor
         self.cz *= factor
 
-    def dot(self,other):
+    def dot(self, other):
         return (self.cx * other.cx) + (self.cy * other.cy) + (self.cz * other.cz)
 
-    def __add__(self, other):
+    def __add__(self, other):  # 这个有必要吗？
         return Coordinate(self.cx + other.cx, self.cy + other.cy, self.cz + other.cz)
 
-    def __mul__(self, other):  # refers to cross product
+    def __mul__(self, other):  # refers to cross product  叉乘，返回一个新向量
         # place holder here
         pass
 
@@ -31,15 +31,18 @@ class Coordinate(object):
     def get_coordinate(self):
         return self.cx, self.cy, self.cz   # return a tuple
 
+
 class Element(object):
-    pass
 
-
-class Atom(object):
-
-    def __init__(self, element:Element, loc:Coordinate):
+    def __init__(self, element: str):
         self.element = element
-        self.location = loc
+
+
+class Atom(Element):
+
+    def __init__(self):
+        super().__init__()
+        self.y = 1
 
 
 class UnitCell(object):
@@ -60,10 +63,4 @@ class UnitCell(object):
         pass
 
     def get_edges(self):
-        pass
-
-    def __iter__(self):
-        pass
-
-    def __str__(self):
         pass
