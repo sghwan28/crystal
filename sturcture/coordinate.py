@@ -1,10 +1,11 @@
 class Coordinate(object):
 
-    def __init__(self, x, y, z, atom = None):
+    def __init__(self, x, y, z, atom=None):
         self.atom = atom
         self.cx = x
         self.cy = y
         self.cz = z
+        self.vector = [x,y,z]
 
     def add(self, other):
         self.cx += other.cx
@@ -16,6 +17,9 @@ class Coordinate(object):
         self.cy *= factor
         self.cz *= factor
 
+    def __getitem__(self, item):
+        return self.vector[item]
+
     def dot(self, other):
         return (self.cx * other.cx) + (self.cy * other.cy) + (self.cz * other.cz)
 
@@ -23,8 +27,10 @@ class Coordinate(object):
         return Coordinate(self.cx + other.cx, self.cy + other.cy, self.cz + other.cz)
 
     def __mul__(self, other):  # refers to cross product  叉乘，返回一个新向量
-        # place holder here
-        pass
+        c = [self[1] * other[2] - self[2] * other[1],
+             self[2] * other[0] - self[0] * other[2],
+             self[0] * other[1] - self[1] * other[0]]
+        return c
 
     def __eq__(self, other):
         return self.get_coordinate() == other.get_coordinate()
@@ -32,11 +38,15 @@ class Coordinate(object):
     def get_coordinate(self):
         return self.cx, self.cy, self.cz   # return a tuple
 
+t = Coordinate(1,2,3)
+t2 = Coordinate(0,1,2)
+t3 = t*t2
+print(t3)
 
-class Element(object):
-
-    def __init__(self, element: str):
-        self.element = element
+# class Element(object):
+#
+#     def __init__(self, element: str):
+#         self.element = element
 
 
 class UnitCell(object):
