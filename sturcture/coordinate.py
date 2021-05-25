@@ -1,6 +1,7 @@
 class Coordinate(object):
 
-    def __init__(self, x, y, z):
+    def __init__(self, x, y, z, atom = None):
+        self.atom = atom
         self.cx = x
         self.cy = y
         self.cz = z
@@ -38,14 +39,8 @@ class Element(object):
         self.element = element
 
 
-class Atom(Element):
-
-    def __init__(self):
-        super().__init__()
-        self.y = 1
-
-
 class UnitCell(object):
+
     def __init__(self):
         self.atom_number = 0
         self.atom_list = dict()
